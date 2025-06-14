@@ -1,94 +1,157 @@
-# Obsidian Sample Plugin
+# Obsidian Knowledge Assistant Plugin
 
-This is a sample plugin for Obsidian (https://obsidian.md).
+A powerful Obsidian plugin that provides AI-powered intelligent note searching and Q&A functionality. Transform your note vault into an intelligent knowledge assistant using advanced semantic search and GPT models.
 
-This project uses TypeScript to provide type checking and documentation.
-The repo depends on the latest plugin API (obsidian.d.ts) in TypeScript Definition format, which contains TSDoc comments describing what it does.
+**[中文文档](README_ZH.md) | English**
 
-This sample plugin demonstrates some of the basic functionality the plugin API can do.
-- Adds a ribbon icon, which shows a Notice when clicked.
-- Adds a command "Open Sample Modal" which opens a Modal.
-- Adds a plugin setting tab to the settings page.
-- Registers a global click event and output 'click' to the console.
-- Registers a global interval which logs 'setInterval' to the console.
+## ✨ Core Features
 
-## First time developing plugins?
+### 🔍 Two Main Modes
+- **Search**: Intelligent search based on content meaning and context
+- **Q&A**: Answer questions based on note content with automatic source attribution
 
-Quick starting guide for new plugin devs:
+### 🧠 AI-Powered Intelligence
+- Support for OpenAI GPT series models (GPT-3.5-turbo, GPT-4-turbo)
+- Custom API endpoints supporting third-party compatible services
+- Intelligent vector indexing and caching system
+- Optional local embedding model support
 
-- Check if [someone already developed a plugin for what you want](https://obsidian.md/plugins)! There might be an existing plugin similar enough that you can partner up with.
-- Make a copy of this repo as a template with the "Use this template" button (login to GitHub if you don't see it).
-- Clone your repo to a local development folder. For convenience, you can place this folder in your `.obsidian/plugins/your-plugin-name` folder.
-- Install NodeJS, then run `npm i` in the command line under your repo folder.
-- Run `npm run dev` to compile your plugin from `main.ts` to `main.js`.
-- Make changes to `main.ts` (or create new `.ts` files). Those changes should be automatically compiled into `main.js`.
-- Reload Obsidian to load the new version of your plugin.
-- Enable plugin in settings window.
-- For updates to the Obsidian API run `npm update` in the command line under your repo folder.
+### 🎨 Modern User Interface
+- Seamless sidebar integration with Obsidian
+- Real-time progress bars and animations
+- Responsive layout for different screen sizes
+- One-click copy with automatic Obsidian double-link conversion
 
-## Releasing new releases
+## 🚀 Installation
 
-- Update your `manifest.json` with your new version number, such as `1.0.1`, and the minimum Obsidian version required for your latest release.
-- Update your `versions.json` file with `"new-plugin-version": "minimum-obsidian-version"` so older versions of Obsidian can download an older version of your plugin that's compatible.
-- Create new GitHub release using your new version number as the "Tag version". Use the exact version number, don't include a prefix `v`. See here for an example: https://github.com/obsidianmd/obsidian-sample-plugin/releases
-- Upload the files `manifest.json`, `main.js`, `styles.css` as binary attachments. Note: The manifest.json file must be in two places, first the root path of your repository and also in the release.
-- Publish the release.
+### Method 1: Manual Installation
+1. Download plugin files to `.obsidian/plugins/obsidian-knowledge-assistant/` directory
+2. Enable the plugin in Obsidian settings
+3. Configure your OpenAI API key
 
-> You can simplify the version bump process by running `npm version patch`, `npm version minor` or `npm version major` after updating `minAppVersion` manually in `manifest.json`.
-> The command will bump version in `manifest.json` and `package.json`, and add the entry for the new version to `versions.json`
+### Method 2: Community Plugin (Coming Soon)
+1. Open Obsidian Settings → Third-party plugins → Community plugins
+2. Search for "Knowledge Assistant"
+3. Install and enable the plugin
 
-## Adding your plugin to the community plugin list
+## 📖 Usage Guide
 
-- Check the [plugin guidelines](https://docs.obsidian.md/Plugins/Releasing/Plugin+guidelines).
-- Publish an initial version.
-- Make sure you have a `README.md` file in the root of your repo.
-- Make a pull request at https://github.com/obsidianmd/obsidian-releases to add your plugin.
+### Basic Operations
 
-## How to use
+1. **Open Plugin**: Click the 🧠 icon in the sidebar
+2. **Select Mode**:
+   - 🔍 **Search**: Enter descriptions for semantic search (check semantic search option, otherwise keyword search only)
+   - 💬 **Q&A**: Enter questions to get intelligent answers based on your notes
 
-- Clone this repo.
-- Make sure your NodeJS is at least v16 (`node --version`).
-- `npm i` or `yarn` to install dependencies.
-- `npm run dev` to start compilation in watch mode.
+### Smart Q&A Explained
 
-## Manually installing the plugin
+Smart Q&A is the core feature of this plugin, working through:
 
-- Copy over `main.js`, `styles.css`, `manifest.json` to your vault `VaultFolder/.obsidian/plugins/your-plugin-id/`.
+1. **Question Understanding**: AI analyzes your question intent and key information
+2. **Content Retrieval**: Searches for relevant information snippets in your note vault
+3. **Answer Generation**: Generates accurate, helpful answers based on retrieved content
+4. **Source Attribution**: Clearly marks the source files for each piece of information
 
-## Improve code quality with eslint (optional)
-- [ESLint](https://eslint.org/) is a tool that analyzes your code to quickly find problems. You can run ESLint against your plugin to find common bugs and ways to improve your code. 
-- To use eslint with this project, make sure to install eslint from terminal:
-  - `npm install -g eslint`
-- To use eslint to analyze this project use this command:
-  - `eslint main.ts`
-  - eslint will then create a report with suggestions for code improvement by file and line number.
-- If your source code is in a folder, such as `src`, you can use eslint with this command to analyze all files in that folder:
-  - `eslint .\src\`
+**Usage Example**:
 
-## Funding URL
+**Input Question**: What are the main types of machine learning?
 
-You can include funding URLs where people who use your plugin can financially support it.
+**AI Answer**:
+Machine learning is mainly divided into three types:
 
-The simple way is to set the `fundingUrl` field to your link in your `manifest.json` file:
+1. **Supervised Learning**: Uses labeled data to train models, such as classification and regression problems [Source 1]
+2. **Unsupervised Learning**: Discovers hidden patterns from unlabeled data, such as cluster analysis [Source 2]
+3. **Reinforcement Learning**: Learns optimal strategies through interaction with the environment, such as game AI [Source 1]
 
-```json
-{
-    "fundingUrl": "https://buymeacoffee.com"
-}
+**Reference Sources**:
+- [1] Machine Learning Basics.md
+- [2] Introduction to Data Science.md
+
+**One-Click Copy**: Click the 📋 copy button, and the answer will be automatically converted to Obsidian double-link format:
+```
+Machine learning is mainly divided into three types:
+
+1. **Supervised Learning**: Uses labeled data to train models, such as classification and regression problems [[Machine Learning Basics]]
+2. **Unsupervised Learning**: Discovers hidden patterns from unlabeled data, such as cluster analysis [[Introduction to Data Science]]
+3. **Reinforcement Learning**: Learns optimal strategies through interaction with the environment, such as game AI [[Machine Learning Basics]]
 ```
 
-If you have multiple URLs, you can also do:
+## ⚙️ Configuration Options
 
-```json
-{
-    "fundingUrl": {
-        "Buy Me a Coffee": "https://buymeacoffee.com",
-        "GitHub Sponsor": "https://github.com/sponsors",
-        "Patreon": "https://www.patreon.com/"
-    }
-}
-```
+### Basic AI Configuration
+- **OpenAI API Key**: Required for AI functionality
+- **API URL**: Default OpenAI official address, customizable for other compatible services
+- **Model Selection**: GPT-3.5-turbo (fast & economical), GPT-4-turbo (high quality)
+- **Temperature Setting**: 0.0-1.0, controls creativity and randomness of responses
+- **Local Embedding**: Optional local vector model support
 
-## API Documentation
+### Search Settings
+- **Folder Access Control**: Limit search scope to specific folders
+- **File Size Limit**: Skip oversized files to optimize performance
+- **Max Search Results**: Control the number of returned results
+- **Similarity Threshold**: Set minimum similarity requirement for semantic search
 
-See https://github.com/obsidianmd/obsidian-api
+### Cache and Performance
+- **Enable Cache**: Cache vector indices to improve search speed
+- **Cache Expiration**: Automatic cache update interval
+- **Cache Management**: Manual cache cleanup options
+- **Batch Size**: Control batch size for vectorization processing
+
+## 🔧 Advanced Features
+
+### Custom API Endpoints
+Support for third-party OpenAI-compatible services:
+- **Azure OpenAI**: `https://your-resource.openai.azure.com/openai/deployments/your-deployment/`
+- **Local Models**: `http://localhost:1234/v1`
+- **Proxy Services**: `https://your-proxy.com/v1`
+
+## 🛠️ Technical Features
+
+- **Vector Search**: Uses cosine similarity for semantic relevance calculation
+- **Smart Chunking**: Automatically splits long documents into appropriate segments
+- **Incremental Indexing**: Only re-creates vectors for modified files
+- **Error Recovery**: Automatic retry and error handling mechanisms
+- **Multi-language Support**: Chinese and English interface switching
+
+## ⚠️ Important Notes
+
+1. **API Costs**: Using OpenAI API incurs costs, monitor usage recommended
+2. **Network Connection**: Requires stable internet connection for AI services
+3. **First Use**: Initial vector index creation takes time, please be patient
+4. **File Formats**: Primarily supports Markdown format, limited support for others
+5. **Privacy Security**: Note content is sent to AI service providers, consider privacy protection
+
+## 🔍 Troubleshooting
+
+### Error Code Explanations
+
+- `API_KEY_INVALID`: Invalid or expired API key
+- `NETWORK_ERROR`: Network connection issues
+- `QUOTA_EXCEEDED`: API quota exceeded
+- `FILE_TOO_LARGE`: File exceeds size limit
+- `EMBEDDING_FAILED`: Vectorization processing failed
+
+## 🔄 Changelog
+
+### v1.0.0 (Current Version)
+- ✨ Brand new smart Q&A functionality
+- ✨ Support for two modes (search, Q&A)
+- ✨ Modern sidebar interface design
+- ✨ Real-time progress tracking and animations
+- ✨ One-click copy with automatic double-link conversion
+- ✨ Custom API endpoint support
+- ✨ Complete settings panel and cache management
+- ✨ Bilingual Chinese and English interface support
+
+## 🤝 Contributing & Support
+
+- **GitHub**: [Project Repository](https://github.com/Sherryyue24/obsidian-knowledge-assistant)
+- **Bug Reports**: [Submit Issue](https://github.com/Sherryyue24/obsidian-knowledge-assistant/issues)
+- **Feature Requests**: [Discussions](https://github.com/Sherryyue24/obsidian-knowledge-assistant/discussions)
+
+---
+
+**License**: MIT  
+**Version**: 1.0.0  
+**Compatibility**: Obsidian 1.0+  
+**Author**: Sherry

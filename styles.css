@@ -1,8 +1,723 @@
-/*
+/* styles.css */
+.search-hit {
+    background: var(--background-secondary-alt);
+    border-radius: 8px;
+    margin: 16px 0;
+    padding: 14px 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    transition: background 0.2s;
+}
+.search-hit:hover {
+    background: var(--background-modifier-hover);
+}
+.search-hit h3 {
+    margin: 0 0 8px 0;
+    color: var(--text-accent);
+    cursor: pointer;
+    font-size: 1.1em;
+    transition: color 0.2s;
+}
+.search-hit h3:hover {
+    color: var(--text-accent-hover);
+    text-decoration: underline;
+}
+.search-hit hr {
+    border: none;
+    border-top: 1px solid var(--background-modifier-border);
+    margin: 8px 0;
+}
+.search-hit div {
+    color: var(--text-normal);
+    font-size: 0.98em;
+    margin-bottom: 4px;
+    line-height: 1.6;
+}
 
-This CSS file will be included with your plugin, and
-available in the app when your plugin is enabled.
+.search-keyword {
+    background: #ffe066;
+    color: #222;
+    border-radius: 3px;
+    padding: 0 2px;
+    font-weight: bold;
+}
 
-If your plugin does not need CSS, delete this file.
+/* Obsidian Knowledge Assistant Plugin Styles */
 
-*/
+/* =================================
+   进度模态框样式
+   ================================= */
+.progress-modal .modal-content {
+    max-width: 500px;
+    padding: 25px;
+}
+
+.progress-container {
+    position: relative;
+    background: var(--background-modifier-border);
+    border-radius: 12px;
+    overflow: hidden;
+    height: 24px;
+    margin: 15px 0;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.progress-bar {
+    background: linear-gradient(90deg, var(--text-accent), var(--text-accent-hover));
+    height: 100%;
+    border-radius: 12px;
+    transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+    overflow: hidden;
+}
+
+.progress-bar::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        45deg,
+        transparent 35%,
+        rgba(255, 255, 255, 0.2) 50%,
+        transparent 65%
+    );
+    animation: progress-shine 2s infinite;
+}
+
+@keyframes progress-shine {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+.progress-buttons {
+    margin-top: 20px;
+}
+
+.progress-buttons button {
+    transition: all 0.2s ease;
+}
+
+.progress-buttons button:hover {
+    background-color: var(--interactive-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* 进度条状态样式 */
+.progress-modal .error .progress-bar {
+    background: var(--text-error);
+}
+
+.progress-modal .error .progress-container {
+    border: 1px solid var(--text-error);
+}
+
+.progress-modal .complete .progress-bar {
+    background: var(--text-success);
+}
+
+/* =================================
+   搜索结果样式
+   ================================= */
+.search-hit {
+    border: 1px solid var(--background-modifier-border);
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+    background: var(--background-primary-alt);
+    transition: all 0.2s ease;
+}
+
+.search-hit:hover {
+    border-color: var(--text-accent);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transform: translateY(-1px);
+}
+
+.search-hit h3 {
+    color: var(--text-accent);
+    margin-bottom: 8px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.search-hit h3:hover {
+    color: var(--text-accent-hover);
+    text-decoration: underline;
+}
+
+.search-hit hr {
+    border: none;
+    border-top: 1px solid var(--background-modifier-border);
+    margin: 8px 0;
+}
+
+.search-hit div {
+    color: var(--text-normal);
+    font-size: 0.98em;
+    margin-bottom: 4px;
+    line-height: 1.6;
+}
+
+/* 搜索相似度分数样式 */
+.search-score {
+    font-size: 0.8em;
+    color: var(--text-muted);
+    margin: 4px 0 8px 0;
+}
+
+/* 关键词高亮样式 */
+.search-keyword {
+    background-color: var(--text-highlight-bg);
+    color: var(--text-accent);
+    padding: 1px 2px;
+    border-radius: 2px;
+    font-weight: bold;
+}
+
+/* =================================
+   设置面板样式
+   ================================= */
+.setting-item-heading {
+    border-bottom: 2px solid var(--background-modifier-border);
+    margin: 2em 0 1em 0;
+    padding-bottom: 0.5em;
+}
+
+.setting-item-heading .setting-item-name {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: var(--text-accent);
+}
+
+.setting-item-heading .setting-item-description {
+    font-size: 0.9em;
+    color: var(--text-muted);
+    margin-top: 0.3em;
+}
+
+/* =================================
+   输入模态框样式
+   ================================= */
+.prompt-input {
+    width: 100%;
+    padding: 8px 12px;
+    margin-top: 10px;
+    border: 1px solid var(--background-modifier-border);
+    border-radius: 4px;
+    background: var(--background-primary);
+    color: var(--text-normal);
+    font-size: 1em;
+}
+
+.prompt-input:focus {
+    outline: none;
+    border-color: var(--text-accent);
+    box-shadow: 0 0 0 2px var(--text-accent-hover);
+}
+
+/* =================================
+   通用组件样式
+   ================================= */
+.knowledge-assistant-modal h3 {
+    text-align: center;
+    margin-bottom: 15px;
+    color: var(--text-normal);
+}
+
+/* =================================
+   Knowledge Assistant 侧边栏样式
+   ================================= */
+.knowledge-assistant-sidebar {
+    padding: 16px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-header {
+    margin-bottom: 16px;
+    border-bottom: 1px solid var(--background-modifier-border);
+    padding-bottom: 12px;
+}
+
+.sidebar-title {
+    margin: 0;
+    font-size: 1.2em;
+    color: var(--text-accent);
+    text-align: center;
+}
+
+/* 新的模式切换样式 */
+.mode-container {
+    margin-bottom: 15px;
+}
+
+.mode-toggle {
+    display: flex;
+    background: var(--background-secondary);
+    border-radius: 8px;
+    padding: 4px;
+    gap: 2px;
+}
+
+.mode-btn {
+    flex: 1;
+    padding: 10px 16px;
+    border: none;
+    background: transparent;
+    color: var(--text-muted);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 0.95em;
+    font-weight: 500;
+}
+
+.mode-btn.active {
+    background: var(--interactive-accent);
+    color: var(--text-on-accent);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.mode-btn:hover:not(.active) {
+    background: var(--interactive-hover);
+    color: var(--text-normal);
+}
+
+/* 语义搜索勾选框样式 */
+.semantic-checkbox-container {
+    margin-bottom: 12px;
+    padding: 8px 12px;
+    background: var(--background-secondary-alt);
+    border-radius: 6px;
+    border: 1px solid var(--background-modifier-border);
+}
+
+.checkbox-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.semantic-checkbox {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    accent-color: var(--interactive-accent);
+}
+
+.checkbox-label {
+    color: var(--text-normal);
+    font-size: 0.9em;
+    cursor: pointer;
+    user-select: none;
+}
+
+/* 模式描述样式 */
+.mode-desc-container {
+    margin-bottom: 15px;
+}
+
+.mode-desc {
+    display: none;
+    font-size: 0.85em;
+    color: var(--text-muted);
+    padding: 6px 12px;
+    background: var(--background-secondary-alt);
+    border-radius: 4px;
+    border-left: 3px solid var(--interactive-accent);
+    margin-bottom: 8px;
+}
+
+.mode-desc.active {
+    display: block;
+}
+
+.search-container {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.sidebar-search-input {
+    flex: 1;
+    padding: 8px 12px;
+    border: 1px solid var(--background-modifier-border);
+    border-radius: 4px;
+    background: var(--background-primary);
+    color: var(--text-normal);
+    font-size: 0.9em;
+}
+
+.sidebar-search-input:focus {
+    outline: none;
+    border-color: var(--text-accent);
+}
+
+.sidebar-search-btn {
+    padding: 8px 16px;
+    background: var(--text-accent);
+    color: var(--text-on-accent);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background 0.2s;
+}
+
+.sidebar-search-btn:hover {
+    background: var(--text-accent-hover);
+}
+
+.quick-actions {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.action-btn {
+    flex: 1;
+    padding: 6px 8px;
+    background: var(--background-secondary);
+    color: var(--text-muted);
+    border: 1px solid var(--background-modifier-border);
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8em;
+    transition: all 0.2s;
+}
+
+.action-btn:hover {
+    background: var(--background-modifier-hover);
+    color: var(--text-normal);
+}
+
+.sidebar-results {
+    flex: 1;
+    overflow-y: auto;
+}
+
+.welcome-message {
+    text-align: center;
+    padding: 20px;
+    color: var(--text-muted);
+}
+
+.welcome-title {
+    font-size: 1.1em;
+    margin-bottom: 8px;
+    color: var(--text-normal);
+}
+
+.welcome-desc {
+    margin-bottom: 16px;
+    font-size: 0.9em;
+}
+
+.welcome-tips {
+    text-align: left;
+    font-size: 0.8em;
+    line-height: 1.4;
+}
+
+.welcome-tips div {
+    margin-bottom: 4px;
+}
+
+.loading-state, .error-state, .no-results {
+    text-align: center;
+    padding: 20px;
+    color: var(--text-muted);
+}
+
+.error-message {
+    font-size: 0.9em;
+    margin-top: 8px;
+    color: var(--text-error);
+}
+
+.result-header {
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--background-modifier-border);
+}
+
+.result-title {
+    font-weight: bold;
+    color: var(--text-accent);
+    font-size: 0.9em;
+}
+
+.sidebar-search-hit {
+    padding: 12px;
+    margin-bottom: 8px;
+    border: 1px solid var(--background-modifier-border);
+    border-radius: 6px;
+    background: var(--background-primary-alt);
+    transition: all 0.2s;
+}
+
+.sidebar-search-hit:hover {
+    border-color: var(--text-accent);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.hit-title {
+    font-weight: bold;
+    color: var(--text-accent);
+    cursor: pointer;
+    margin-bottom: 6px;
+    font-size: 0.9em;
+    line-height: 1.3;
+}
+
+.hit-title:hover {
+    text-decoration: underline;
+}
+
+.hit-score {
+    font-size: 0.8em;
+    color: var(--text-success);
+    margin-bottom: 6px;
+}
+
+.hit-snippet {
+    font-size: 0.8em;
+    color: var(--text-muted);
+    line-height: 1.4;
+    margin-bottom: 6px;
+}
+
+.hit-path {
+    font-size: 0.7em;
+    color: var(--text-faint);
+    opacity: 0.7;
+}
+
+.sidebar-stats {
+    margin-top: auto;
+    padding-top: 12px;
+    border-top: 1px solid var(--background-modifier-border);
+    text-align: center;
+}
+
+.stats-text {
+    font-size: 0.8em;
+    color: var(--text-muted);
+}
+
+/* =================================
+   问答功能样式
+   ================================= */
+.qa-question-header, .qa-answer-header, .qa-sources-header {
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--background-modifier-border);
+}
+
+.qa-answer-title-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.qa-section-title {
+    font-weight: bold;
+    color: var(--text-accent);
+    font-size: 1em;
+    margin-bottom: 8px;
+}
+
+.qa-copy-btn {
+    background: var(--interactive-normal);
+    color: var(--text-normal);
+    border: 1px solid var(--background-modifier-border);
+    border-radius: 4px;
+    padding: 4px 8px;
+    font-size: 0.8em;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.qa-copy-btn:hover {
+    background: var(--interactive-hover);
+    border-color: var(--text-accent);
+    transform: translateY(-1px);
+}
+
+.qa-copy-btn:active {
+    transform: translateY(0);
+}
+
+.qa-question-text {
+    font-size: 0.95em;
+    color: var(--text-normal);
+    background: var(--background-secondary);
+    padding: 12px;
+    border-radius: 6px;
+    border-left: 3px solid var(--text-accent);
+}
+
+.qa-answer-content {
+    background: var(--background-primary-alt);
+    padding: 16px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    border: 1px solid var(--background-modifier-border);
+}
+
+.qa-answer-line {
+    margin-bottom: 8px;
+    line-height: 1.6;
+    color: var(--text-normal);
+}
+
+.qa-answer-line:last-child {
+    margin-bottom: 0;
+}
+
+.qa-answer-line h3 {
+    color: var(--text-accent);
+    margin: 12px 0 8px 0;
+    font-size: 1.1em;
+}
+
+.qa-answer-line h4 {
+    color: var(--text-accent);
+    margin: 10px 0 6px 0;
+    font-size: 1em;
+}
+
+.qa-answer-line ul, .qa-answer-line ol {
+    margin: 8px 0;
+    padding-left: 20px;
+}
+
+.qa-answer-line li {
+    margin-bottom: 4px;
+}
+
+.qa-answer-line strong {
+    color: var(--text-accent);
+    font-weight: 600;
+}
+
+.qa-answer-line em {
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+.qa-answer-line code {
+    background: var(--code-background);
+    color: var(--code-normal);
+    padding: 2px 4px;
+    border-radius: 3px;
+    font-family: var(--font-monospace);
+    font-size: 0.9em;
+}
+
+/* Q&A来源现在使用与搜索结果相同的样式 (.sidebar-search-hit, .hit-title, .hit-score, .hit-snippet, .hit-path) */
+
+/* Q&A侧边栏内进度显示 */
+.qa-progress-container {
+    padding: 20px;
+    background: var(--background-primary-alt);
+    border-radius: 8px;
+    margin: 16px 0;
+    border: 1px solid var(--background-modifier-border);
+}
+
+.qa-progress-header {
+    margin-bottom: 16px;
+    text-align: center;
+}
+
+.qa-progress-title {
+    font-size: 1.1em;
+    font-weight: 600;
+    color: var(--text-accent);
+    margin-bottom: 8px;
+}
+
+.qa-progress-status {
+    font-size: 0.9em;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+    text-align: center;
+    min-height: 1.2em;
+}
+
+.qa-progress-bar {
+    width: 100%;
+    height: 8px;
+    background: var(--background-modifier-border);
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+}
+
+.qa-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--interactive-accent), var(--interactive-accent-hover));
+    border-radius: 4px;
+    transition: width 0.3s ease;
+    position: relative;
+    width: 0%;
+}
+
+.qa-progress-fill::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    animation: qa-progress-shine 1.5s infinite;
+}
+
+@keyframes qa-progress-shine {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+/* =================================
+   Modal 和其他动态样式
+   ================================= */
+.knowledge-assistant-modal {
+    z-index: 9999;
+}
+
+/* =================================
+   响应式设计
+   ================================= */
+@media (max-width: 600px) {
+    .progress-modal .modal-content {
+        max-width: 90vw;
+        padding: 15px;
+    }
+    
+    .search-hit {
+        padding: 12px;
+        margin-bottom: 12px;
+    }
+}
+
+@media (max-width: 400px) {
+    .quick-actions {
+        flex-direction: column;
+    }
+    
+    .search-container {
+        flex-direction: column;
+    }
+}

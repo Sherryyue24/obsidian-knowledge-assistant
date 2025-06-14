@@ -1,11 +1,15 @@
 {
-	"id": "sample-plugin",
-	"name": "Sample Plugin",
+	"id": "obsidian-knowledge-assistant",
+	"name": "Knowledge Assistant",
 	"version": "1.0.0",
-	"minAppVersion": "0.15.0",
-	"description": "Demonstrates some of the capabilities of the Obsidian API.",
-	"author": "Obsidian",
-	"authorUrl": "https://obsidian.md",
-	"fundingUrl": "https://obsidian.md/pricing",
+	"minAppVersion": "1.0.0",
+	"description": "智能AI助手插件，提供基于笔记内容的搜索和问答功能，支持关键词搜索、语义搜索和智能问答，并标注信息出处。",
+	"author": "Sherry",
+	"authorUrl": "https://github.com/Sherryyue24",
+	"fundingUrl": {
+        "Buy Me a Coffee": "https://buymeacoffee.com",
+        "GitHub Sponsor": "https://github.com/sponsors",
+        "Patreon": "https://www.patreon.com/"
+    },
 	"isDesktopOnly": false
 }
