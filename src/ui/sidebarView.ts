@@ -599,10 +599,10 @@ export class AISidebarView extends ItemView {
         
         // 复制按钮
         const copyBtn = answerTitleContainer.createEl('button', {
-            text: '📋 复制',
+            text: texts.copyBtn,
             cls: 'qa-copy-btn'
         });
-        copyBtn.title = '复制AI回答';
+        copyBtn.title = texts.copyBtnTitle;
 
         const answerEl = this.resultsContainer.createDiv({ cls: 'qa-answer-content' });
         
@@ -639,30 +639,39 @@ export class AISidebarView extends ItemView {
                 // 将来源引用转换为双链格式
                 let processedAnswer = answer;
                 
-                // 替换 [来源 X] 为实际的双链
+                // 替换来源引用为实际的双链 - 同时处理中英文格式
                 contextHits.forEach((hit, index) => {
-                    const sourceRef = `[来源 ${index + 1}]`;
+                    const sourceRefChinese = `[来源 ${index + 1}]`;
+                    const sourceRefEnglish = `[Source ${index + 1}]`;
                     const fileName = hit.name.replace('.md', ''); // 移除.md扩展名
                     const doubleLink = `[[${fileName}]]`;
                     
-                    // 全局替换所有出现的来源引用
-                    processedAnswer = processedAnswer.replace(new RegExp(sourceRef.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g'), doubleLink);
+                    // 全局替换所有出现的来源引用 - 同时处理中英文格式
+                    processedAnswer = processedAnswer.replace(
+                        new RegExp(sourceRefChinese.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g'), 
+                        doubleLink
+                    );
+                    processedAnswer = processedAnswer.replace(
+                        new RegExp(sourceRefEnglish.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g'), 
+                        doubleLink
+                    );
                 });
                 
                 await navigator.clipboard.writeText(processedAnswer);
-                copyBtn.textContent = '✅ 已复制';
+                
+                copyBtn.textContent = texts.copySuccess;
                 copyBtn.style.color = 'var(--text-success)';
                 
                 // 2秒后恢复原状
                 setTimeout(() => {
-                    copyBtn.textContent = '📋 复制';
+                    copyBtn.textContent = texts.copyBtn;
                     copyBtn.style.color = '';
                 }, 2000);
                 
-                new Notice('✅ AI回答已复制到剪贴板（含双链格式）');
+                new Notice(texts.copySuccessNotice);
             } catch (error) {
                 console.error('复制失败:', error);
-                new Notice('❌ 复制失败，请手动选择文本复制');
+                new Notice(texts.copyError);
             }
         };
 

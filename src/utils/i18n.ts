@@ -72,6 +72,13 @@ export interface I18nTexts {
     clickToOpen: string;
     snippetLabel: string;
     
+    // 复制功能相关
+    copyBtn: string;
+    copyBtnTitle: string;
+    copySuccess: string;
+    copySuccessNotice: string;
+    copyError: string;
+    
     // Embedding服务相关
     embeddingApiError: string;
     embeddingApiRequestFailed: string;
@@ -241,6 +248,13 @@ export const I18N_TEXTS: Record<string, I18nTexts> = {
         clickToOpen: '点击打开文件',
         snippetLabel: '片段',
         
+        // 复制功能相关
+        copyBtn: '📋 复制',
+        copyBtnTitle: '复制AI回答',
+        copySuccess: '✅ 已复制',
+        copySuccessNotice: '✅ AI回答已复制到剪贴板（含双链格式）',
+        copyError: '❌ 复制失败，请手动选择文本复制',
+        
         // Embedding服务相关
         embeddingApiError: 'Embedding API错误',
         embeddingApiRequestFailed: 'Embedding API请求失败',
@@ -397,6 +411,13 @@ export const I18N_TEXTS: Record<string, I18nTexts> = {
         notesUnit: 'notes',
         clickToOpen: 'Click to open file',
         snippetLabel: 'Snippet',
+        
+        // 复制功能相关
+        copyBtn: '📋 Copy',
+        copyBtnTitle: 'Copy AI Answer',
+        copySuccess: '✅ Copied',
+        copySuccessNotice: '✅ AI answer copied to clipboard (with double-link format)',
+        copyError: '❌ Copy failed, please manually select and copy text',
         
         // Embedding服务相关
         embeddingApiError: 'Embedding API Error',
